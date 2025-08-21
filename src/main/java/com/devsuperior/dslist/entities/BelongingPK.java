@@ -20,8 +20,8 @@ public class BelongingPK {
 
     @EqualsAndHashCode.Include
     @ManyToOne
-    @JoinColumn(name = "gameList_id")
-    private GameList gameList;
+    @JoinColumn(name = "list_id")
+    private GameList list;
 
 
 }
