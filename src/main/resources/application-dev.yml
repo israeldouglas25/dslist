@@ -14,6 +14,7 @@ spring:
     hibernate:
       ddl-auto: none
 
+                    #### Criar sql para o banco de dados ####
 #      jakarta:       #### fica entre o properties e o hibernate ####
 #        persistence:
 #          schema-generation:
