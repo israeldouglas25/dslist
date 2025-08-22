@@ -1,6 +1,6 @@
 package com.devsuperior.dslist.controllers;
 
-import com.devsuperior.dslist.dtos.GameDTO;
+import com.devsuperior.dslist.dtos.GameResumeDTO;
 import com.devsuperior.dslist.dtos.GameListDTO;
 import com.devsuperior.dslist.dtos.ReplacementDTO;
 import com.devsuperior.dslist.service.GameListService;
@@ -32,7 +32,7 @@ public class GameListController {
     }
 
     @GetMapping("/{listId}/games")
-    public ResponseEntity<List<GameDTO>> findByList(@PathVariable Long listId) {
+    public ResponseEntity<List<GameResumeDTO>> findByList(@PathVariable Long listId) {
         return ResponseEntity.ok(gameService.findByList(listId).getBody());
     }
 

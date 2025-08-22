@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.service;
 
 import com.devsuperior.dslist.dtos.GameDTO;
+import com.devsuperior.dslist.dtos.GameResumeDTO;
 import com.devsuperior.dslist.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +17,19 @@ public class GameService {
     private GameRepository gameRepository;
 
     @Transactional
-    public ResponseEntity<List<GameDTO>> findAll() {
+    public ResponseEntity<List<GameResumeDTO>> findAll() {
         return ResponseEntity.ok(
                 gameRepository.findAll().stream()
-                        .map(GameDTO::new)
+                        .map(GameResumeDTO::new)
                         .toList()
         );
     }
 
     @Transactional
-    public ResponseEntity<List<GameDTO>> findByList(Long listId) {
+    public ResponseEntity<List<GameResumeDTO>> findByList(Long listId) {
         return ResponseEntity.ok(
                 gameRepository.searchByList(listId).stream()
-                        .map(GameDTO::new)
+                        .map(GameResumeDTO::new)
                         .toList()
         );
     }

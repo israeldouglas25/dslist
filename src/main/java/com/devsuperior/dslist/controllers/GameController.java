@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.controllers;
 
 import com.devsuperior.dslist.dtos.GameDTO;
+import com.devsuperior.dslist.dtos.GameResumeDTO;
 import com.devsuperior.dslist.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public ResponseEntity<List<GameDTO>> findAll() {
+    public ResponseEntity<List<GameResumeDTO>> findAll() {
         return ResponseEntity.ok(gameService.findAll().getBody());
     }
 
