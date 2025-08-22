@@ -2,6 +2,8 @@ package com.devsuperior.dslist.service;
 
 import com.devsuperior.dslist.dtos.GameListDTO;
 import com.devsuperior.dslist.repository.GameListRepository;
+import com.devsuperior.dslist.repository.GameRepository;
+import com.devsuperior.dslist.utils.GameDTOProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class GameListService {
 
     @Autowired
     private GameListRepository gameListRepository;
+
+    @Autowired
+    private GameRepository gameRepository;
 
     @Transactional
     public ResponseEntity<List<GameListDTO>> findAll() {
@@ -30,4 +35,18 @@ public class GameListService {
                 .map(gameList -> ResponseEntity.ok(new GameListDTO(gameList)))
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @Transactional
+    public void move(Long listId, int fromIndex, int toIndex) {
+
+        List<GameDTOProjection> list = gameRepository.searchByList(listId);
+
+        GameDTOProjection game = list.remove(fromIndex);
+        list.add(toIndex, game);
+
+        for (int i = 0; i < list.size(); i++) {
+            gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
+        }
+    }
+
 }
