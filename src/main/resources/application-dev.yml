@@ -14,9 +14,7 @@ spring:
     hibernate:
       ddl-auto: none
 
-#  jpa:
-#    properties:
-#      jakarta:
+#      jakarta:       #### fica entre o properties e o hibernate ####
 #        persistence:
 #          schema-generation:
 #            create-source: metadata
