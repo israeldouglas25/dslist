@@ -1,7 +1,7 @@
 package com.devsuperior.dslist.controllers;
 
-import com.devsuperior.dslist.dtos.GameResumeDTO;
 import com.devsuperior.dslist.dtos.GameListDTO;
+import com.devsuperior.dslist.dtos.GameResumeDTO;
 import com.devsuperior.dslist.dtos.ReplacementDTO;
 import com.devsuperior.dslist.service.GameListService;
 import com.devsuperior.dslist.service.GameService;
@@ -23,17 +23,17 @@ public class GameListController {
 
     @GetMapping
     public ResponseEntity<List<GameListDTO>> findAll() {
-        return ResponseEntity.ok(gameListService.findAll().getBody());
+        return gameListService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GameListDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(gameListService.findById(id).getBody());
+        return gameListService.findById(id);
     }
 
     @GetMapping("/{listId}/games")
     public ResponseEntity<List<GameResumeDTO>> findByList(@PathVariable Long listId) {
-        return ResponseEntity.ok(gameService.findByList(listId).getBody());
+        return gameService.findByList(listId);
     }
 
     @PostMapping("/{listId}/replacement")

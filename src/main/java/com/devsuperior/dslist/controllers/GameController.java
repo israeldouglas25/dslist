@@ -21,11 +21,11 @@ public class GameController {
 
     @GetMapping
     public ResponseEntity<List<GameResumeDTO>> findAll() {
-        return ResponseEntity.ok(gameService.findAll().getBody());
+        return gameService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GameDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(gameService.findById(id).getBody());
+        return gameService.findById(id);
     }
 }
